@@ -128,22 +128,7 @@ exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 exec --no-startup-id feh --bg-fill ~/.wallpaper
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -c 1a1b26
 
-# ─── Bar ───────────────────────────────────────────────────────
-bar {
-    status_command i3status
-    position bottom
-    separator_symbol " | "
-    colors {
-        background $bg
-        statusline $fg
-        separator  $inact
-        #                  border   backgr.  text
-        focused_workspace  $accent  $accent  $bg
-        active_workspace   $inact   $inact   $fg
-        inactive_workspace $bg      $bg      $inact
-        urgent_workspace   $urgent  $urgent  $bg
-    }
-}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # ─── Machine-local overrides (never committed) ─────────────────
 include ~/.config/i3/config.local
