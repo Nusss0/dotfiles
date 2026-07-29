@@ -1,0 +1,86 @@
+* {
+    bg:       #1a1b26;
+    bg-alt:   #16161e;
+    fg:       #c0caf5;
+    fg-dim:   #565f89;
+    accent:   #7aa2f7;
+    urgent:   #f7768e;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    8px;
+    width:            600px;
+    padding:          0px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing:  0px;
+    padding:  0px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    padding:          12px 16px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+    border:           0px 0px 2px 0px;
+    border-color:     @accent;
+}
+
+prompt {
+    text-color: @accent;
+    font:       "JetBrainsMono Nerd Font Bold 11";
+}
+
+entry {
+    placeholder:            "search";
+    placeholder-color:      @fg-dim;
+    cursor:                 text;
+}
+
+listview {
+    lines:        8;
+    columns:      1;
+    padding:      8px;
+    spacing:      2px;
+    scrollbar:    false;
+    fixed-height: false;
+}
+
+element {
+    padding:       8px 12px;
+    spacing:       10px;
+    border-radius: 6px;
+    cursor:        pointer;
+}
+
+element normal.normal {
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color:       @bg;
+}
+
+element alternate.normal {
+    text-color: @fg;
+}
+
+element-icon {
+    size:            22px;
+    vertical-align:  0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color:     inherit;
+}

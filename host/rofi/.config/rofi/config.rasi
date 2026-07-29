@@ -1,0 +1,16 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: " apps";
+    display-run:  " run";
+    display-window: " win";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 11";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-remove-to-eol: "";
+}
+
+@theme "tokyonight"
