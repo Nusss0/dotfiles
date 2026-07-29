@@ -1,0 +1,38 @@
+# Keys and credentials
+*.pem
+*.key
+*_rsa
+*_ed25519
+id_*
+.ssh/
+.gnupg/
+rclone.conf
+.netrc
+.env
+*credentials*
+*secret*
+*token*
+
+# Machine-local overrides (see 1.4)
+*.local
+
+# History
+*_history
+.zsh_history
+.bash_history
+.lesshst
+.python_history
+
+# Caches and state
+.cache/
+*.log
+*.swp
+*.swo
+
+# Binary assets — install via bootstrap instead
+*.ttf
+*.otf
+*.zip
+
+# OS junk
+.DS_Store
