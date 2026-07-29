@@ -36,3 +36,5 @@ rclone.conf
 
 # OS junk
 .DS_Store
+*.bak
+*~
