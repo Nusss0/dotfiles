@@ -125,7 +125,7 @@ exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
-exec --no-startup-id xsetroot -solid "#1a1b26"
+exec --no-startup-id feh --bg-fill ~/.wallpaper
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -n -c 1a1b26
 
 # ─── Bar ───────────────────────────────────────────────────────
@@ -147,3 +147,15 @@ bar {
 
 # ─── Machine-local overrides (never committed) ─────────────────
 include ~/.config/i3/config.local
+
+# ─── Multi-monitor ─────────────────────────────────────────────
+# Move focus between outputs
+bindsym $mod+Control+Left  focus output left
+bindsym $mod+Control+Right focus output right
+
+# Move current workspace to the other output
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less    move workspace to output left
+
+# Re-apply saved display layout
+bindsym $mod+p exec --no-startup-id ~/.screenlayout/default.sh
