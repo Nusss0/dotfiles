@@ -2,6 +2,7 @@
 # Keybindings mirror tmux: same motions, different layer.
 
 set $mod Mod4
+workspace_auto_back_and_forth yes
 set $term alacritty
 
 font pango:JetBrainsMono Nerd Font 10
@@ -31,7 +32,10 @@ client.urgent           $urgent  $urgent  $bg      $urgent   $urgent
 bindsym $mod+Return exec $term
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab exec --no-startup-id rofi -show window
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Shift+q kill
 
 # ─── Focus (same keys as tmux pane navigation) ─────────────────

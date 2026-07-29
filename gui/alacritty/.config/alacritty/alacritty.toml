@@ -4,7 +4,7 @@ TERM = "xterm-256color"
 
 [window]
 padding = { x = 8, y = 8 }
-opacity = 0.85
+opacity = 0.90
 dynamic_title = true
 
 [font]
