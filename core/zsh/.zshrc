@@ -82,6 +82,12 @@ if command -v fzf >/dev/null 2>&1; then
   fi
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+  if command -v fdfind >/dev/null 2>&1; then
+    export FZF_ALT_C_COMMAND='fdfind --type d --hidden --exclude .git'
+  elif command -v fd >/dev/null 2>&1; then
+    export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
+  fi
+
   if command -v batcat >/dev/null 2>&1; then
     export FZF_CTRL_T_OPTS="--preview 'batcat --color=always --style=numbers --line-range=:200 {}'"
   elif command -v bat >/dev/null 2>&1; then
