@@ -1,0 +1,50 @@
+# Identity lives in ~/.gitconfig.local — never committed.
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+    pager = less -FR
+
+[pull]
+    rebase = true
+
+[fetch]
+    prune = true
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[diff]
+    colorMoved = zebra
+    algorithm = histogram
+
+[merge]
+    conflictstyle = zdiff3
+
+[rerere]
+    enabled = true
+
+[log]
+    date = iso
+
+[color]
+    ui = auto
+
+[alias]
+    st = status -sb
+    co = checkout
+    br = branch
+    ci = commit
+    amend = commit --amend --no-edit
+    unstage = restore --staged
+    last = log -1 HEAD --stat
+    lg = log --oneline --graph --decorate --all
+    who = config --get-regexp ^user\\.
+
+# Machine-local overrides. Last wins.
+[include]
+    path = ~/.gitconfig.local

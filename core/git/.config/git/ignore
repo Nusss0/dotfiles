@@ -1,0 +1,15 @@
+# Editor / OS noise
+*.bak
+*~
+*.swp
+*.swo
+.DS_Store
+
+# Tooling local state
+**/.claude/settings.local.json
+
+# Language artifacts
+__pycache__/
+*.pyc
+.venv/
+node_modules/
