@@ -25,8 +25,13 @@ OUTPUT=$(awk '
 [ -z "$OUTPUT" ] && { rofi -e "No bindsym entries found in $I3_CONF"; exit 1; }
 
 HEADER="<span color='$ACCENT'><b>  i3 KEYBINDINGS  </b></span>
-<span color='#565f89' font='JetBrainsMono Nerd Font 9'>Type to filter</span>"
+<span color='#565f89' font='JetBrainsMono Nerd Font 9'>Type to filter  ·  Ctrl+J/K or arrows to scroll</span>"
 
-OVERRIDE='window {width: 1100px;} listview {lines: 18; spacing: 3px;} element {padding: 5px 10px;} element-text {font: "JetBrainsMono Nerd Font 10";}'
+OVERRIDE='
+window   { width: 1100px; }
+listview { lines: 18; spacing: 3px; cycle: false; }
+element  { padding: 5px 10px; }
+element-text { font: "JetBrainsMono Nerd Font 10"; }
+'
 
-echo "$OUTPUT" | rofi -dmenu -i -p "Search" -theme-str "$OVERRIDE" -mesg "$HEADER" >/dev/null
+echo "$OUTPUT" | rofi -dmenu -i -scroll-method 1 -p "Search" -theme-str "$OVERRIDE" -mesg "$HEADER" >/dev/null
