@@ -137,6 +137,23 @@ fi
 alias dots='cd ~/dotfiles'
 alias i3conf='cd ~/.config/i3'
 
+# ─── Wallpaper ────────────────────────────────────────────────
+if command -v feh >/dev/null 2>&1; then
+  wp() {
+    local d="$HOME/Pictures/wallpapers"
+    local f
+    if [ -n "${1:-}" ]; then
+      f="$d/$1"
+    elif command -v fzf >/dev/null 2>&1; then
+      f="$(find "$d" -maxdepth 1 -type f | fzf --prompt='wallpaper> ')" || return
+    else
+      echo "usage: wp <filename>"; ls "$d"; return 1
+    fi
+    [ -f "$f" ] || { echo "no such file: $f"; return 1; }
+    ln -sfn "$f" ~/.wallpaper && feh --bg-fill ~/.wallpaper && echo "set: $(basename "$f")"
+  }
+fi
+
 # ─── Machine-local overrides (never committed) ────────────────
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
