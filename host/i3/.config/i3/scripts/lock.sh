@@ -10,6 +10,13 @@ BLANK="#00000000"
 
 pgrep -x i3lock >/dev/null && exit 0
 
+# Let any rofi window close and the compositor repaint before capturing.
+if pgrep -x rofi >/dev/null; then
+  pkill -x rofi
+  for _ in $(seq 20); do pgrep -x rofi >/dev/null || break; sleep 0.05; done
+fi
+sleep 0.2
+
 if ! i3lock --version 2>&1 | grep -q "\.c\."; then
   exec i3lock -n -c "$BG"
 fi
