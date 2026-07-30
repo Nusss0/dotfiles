@@ -10,7 +10,7 @@ font pango:JetBrainsMono Nerd Font 10
 # ─── Gaps & borders ────────────────────────────────────────────
 gaps inner 8
 gaps outer 0
-smart_gaps on
+gaps top 44
 default_border pixel 2
 default_floating_border pixel 2
 smart_borders on
