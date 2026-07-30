@@ -111,22 +111,35 @@ alias ...='cd ../..'
 PROMPT='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n%(#.💀.㉿)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 
+# ─── Autosuggestions ──────────────────────────────────────────
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#565f89'
+  ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+  bindkey -M viins '^@' autosuggest-accept
+  bindkey -M viins '^G' autosuggest-clear
+fi
+
+# ─── Completion extras ────────────────────────────────────────
+zmodload zsh/complist
+_comp_options+=(globdots)
+
+# ─── eza (falls back to ls where unavailable) ─────────────────
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --icons --group-directories-first'
+  alias ll='eza -lah --icons --group-directories-first'
+  alias la='eza -a --icons --group-directories-first'
+  alias lt='eza --tree --level=2 --icons'
+fi
+
+# ─── Jump shortcuts ───────────────────────────────────────────
+alias dots='cd ~/dotfiles'
+alias i3conf='cd ~/.config/i3'
+
 # ─── Machine-local overrides (never committed) ────────────────
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# ─── Wallpaper ────────────────────────────────────────────────
-if command -v feh >/dev/null 2>&1; then
-  wp() {
-    local d="$HOME/Pictures/wallpapers"
-    local f
-    if [ -n "${1:-}" ]; then
-      f="$d/$1"
-    elif command -v fzf >/dev/null 2>&1; then
-      f="$(find "$d" -maxdepth 1 -type f | fzf --prompt='wallpaper> ')" || return
-    else
-      echo "usage: wp <filename>"; ls "$d"; return 1
-    fi
-    [ -f "$f" ] || { echo "no such file: $f"; return 1; }
-    ln -sfn "$f" ~/.wallpaper && feh --bg-fill ~/.wallpaper && echo "set: $(basename "$f")"
-  }
-fi
+# ─── Syntax highlighting: MUST be the last line ───────────────
+[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
