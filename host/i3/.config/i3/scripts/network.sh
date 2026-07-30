@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Single instance: pressing the key again closes it.
+pgrep -x rofi >/dev/null && { pkill -x rofi; exit 0; }
 # Wifi manager in rofi. Pure nmcli.
 ACCENT="#7aa2f7"
 RED="#f7768e"

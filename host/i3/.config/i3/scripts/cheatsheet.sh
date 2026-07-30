@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Single instance: pressing the key again closes it.
+pgrep -x rofi >/dev/null && { pkill -x rofi; exit 0; }
 # Searchable list of every i3 keybinding, parsed from the live config.
 I3_CONF="$HOME/.config/i3/config"
 ACCENT="#7aa2f7"

@@ -104,8 +104,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 # ─── Session ───────────────────────────────────────────────────
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning \
-    -m 'Exit i3?' -B 'Yes' 'i3-msg exit'
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu.sh
 bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock.sh
 
 # ─── Media & hardware keys ─────────────────────────────────────
@@ -170,4 +169,3 @@ bindsym $mod+Shift+w exec --no-startup-id ~/.config/i3/scripts/network.sh
 bindsym $mod+Shift+i exec --no-startup-id ~/.config/i3/scripts/caffeine.sh toggle
 
 # ─── Power menu ────────────────────────────────────────────────
-bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/powermenu.sh

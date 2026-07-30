@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Single instance: pressing the key again closes it.
+pgrep -x rofi >/dev/null && { pkill -x rofi; exit 0; }
 # Power menu. No input bar, so j/k navigate directly.
 OPTIONS="  Lock\n  Suspend\n  Logout\n  Reboot\n  Shutdown"
 
