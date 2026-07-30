@@ -150,3 +150,17 @@ bindsym $mod+Shift+less    move workspace to output left
 
 # Re-apply saved display layout
 bindsym $mod+p exec --no-startup-id ~/.screenlayout/default.sh
+
+# ─── Notifications (dunst) ─────────────────────────────────────
+bindsym $mod+n        exec --no-startup-id dunstctl close
+bindsym $mod+Shift+n  exec --no-startup-id dunstctl close-all
+bindsym $mod+Ctrl+n   exec --no-startup-id dunstctl history-pop
+bindsym $mod+Mod1+n   exec --no-startup-id dunstctl set-paused toggle
+
+# ─── Automatic split direction ─────────────────────────────────
+exec_always --no-startup-id autotiling
+
+# ─── GTK theme for Chrome, virt-manager, file dialogs ──────────
+exec_always --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-blue-dark"
+exec_always --no-startup-id gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
