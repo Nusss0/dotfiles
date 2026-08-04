@@ -104,6 +104,11 @@ if printf '%s\n' "$@" | grep -q '^host$' && command -v im-config >/dev/null 2>&1
   im-config -n none >/dev/null 2>&1 || true
 fi
 
+# ─── Free Alt+Space for tmux under XFCE ────────────────────────
+if command -v xfconf-query >/dev/null 2>&1; then
+  xfconf-query -c xfce4-keyboard-shortcuts -p '/xfwm4/custom/<Alt>space' -s 'empty' 2>/dev/null || true
+fi
+
 # ─── Default shell ─────────────────────────────────────────────
 if [ "$SHELL" != "$(command -v zsh)" ]; then
   say "Setting zsh as default shell"
