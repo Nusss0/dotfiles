@@ -35,7 +35,21 @@ done
 say "Installing packages"
 sudo apt update
 # shellcheck disable=SC2086
-sudo apt install -y $LIST || echo "some packages failed — continuing"
+sudo apt install -y $LIST || echo "batch install had errors — verifying individually"
+
+say "Verifying packages"
+MISSING=""
+for p in $LIST; do
+  dpkg -l "$p" 2>/dev/null | grep -q '^ii' || MISSING="$MISSING $p"
+done
+if [ -n "$MISSING" ]; then
+  echo "  retrying:$MISSING"
+  for p in $MISSING; do
+    sudo apt install -y "$p" >/dev/null 2>&1 || echo "  STILL MISSING: $p"
+  done
+else
+  echo "  all packages present"
+fi
 
 # ─── Directories ───────────────────────────────────────────────
 say "Creating directories"
