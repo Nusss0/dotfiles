@@ -126,7 +126,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="Virt-manager" title="^(?!Virtual Machine Manager).*"] floating enable
 
 # ─── Autostart ─────────────────────────────────────────────────
-exec --no-startup-id picom
+exec_always --no-startup-id sh -c "pkill -x picom; sleep 0.3; exec picom"
 exec --no-startup-id dunst
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 exec --no-startup-id feh --bg-fill ~/.wallpaper
