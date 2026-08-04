@@ -154,6 +154,9 @@ if command -v feh >/dev/null 2>&1; then
   }
 fi
 
+# ─── ranger image preview (Debian path) ───────────────────────
+[ -x /usr/lib/w3m/w3mimgdisplay ] && export W3MIMGDISPLAY_PATH=/usr/lib/w3m/w3mimgdisplay
+
 # ─── Machine-local overrides (never committed) ────────────────
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
