@@ -158,6 +158,7 @@ bindsym $mod+Mod1+n   exec --no-startup-id dunstctl set-paused toggle
 
 # ─── Automatic split direction ─────────────────────────────────
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id sh -c 'pkill -f "bash .*cava-daemon" ; pkill -x cava ; sleep 0.3 ; exec "$HOME/.config/i3/scripts/cava-daemon.sh"'
 
 # ─── GTK theme for Chrome, virt-manager, file dialogs ──────────
 exec_always --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-blue-dark"
