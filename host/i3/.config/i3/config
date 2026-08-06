@@ -128,6 +128,7 @@ for_window [class="Virt-manager" title="^(?!Virtual Machine Manager).*"] floatin
 # ─── Autostart ─────────────────────────────────────────────────
 exec_always --no-startup-id sh -c "pkill -x picom; sleep 0.3; exec picom"
 exec --no-startup-id dunst
+exec --no-startup-id blueman-applet
 exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1
 exec --no-startup-id feh --bg-fill ~/.wallpaper
 exec_always --no-startup-id sh -c 'pkill -x xss-lock; sleep 0.3; exec xss-lock --transfer-sleep-lock -- $HOME/.config/i3/scripts/lock.sh'
@@ -166,6 +167,7 @@ exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-sche
 # ─── Rofi tools ────────────────────────────────────────────────
 bindsym $mod+F1 exec --no-startup-id ~/.config/i3/scripts/cheatsheet.sh
 bindsym $mod+Shift+w exec --no-startup-id ~/.config/i3/scripts/network.sh
+bindsym $mod+Shift+b exec --no-startup-id ~/.config/i3/scripts/bluetooth.sh
 bindsym $mod+Shift+i exec --no-startup-id ~/.config/i3/scripts/caffeine.sh toggle
 
 # ─── Power menu ────────────────────────────────────────────────
