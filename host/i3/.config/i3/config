@@ -157,6 +157,7 @@ bindsym $mod+Ctrl+n   exec --no-startup-id dunstctl history-pop
 bindsym $mod+Mod1+n   exec --no-startup-id dunstctl set-paused toggle
 
 # ─── Automatic split direction ─────────────────────────────────
+exec_always --no-startup-id ~/.config/i3/scripts/touchpad.sh
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id sh -c 'pkill -f "bash .*cava-daemon" ; pkill -x cava ; sleep 0.3 ; exec "$HOME/.config/i3/scripts/cava-daemon.sh"'
 
